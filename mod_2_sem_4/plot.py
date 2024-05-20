@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 
 period = 1.0  # период решетки
-total_strokes = 800  # общее число штрихов
+total_strokes = 200  # общее число штрихов
 d = 5  # ширина щели
 
 theta = np.linspace(-np.pi / 2, np.pi / 2, 100)  # угол дифракции
