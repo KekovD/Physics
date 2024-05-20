@@ -4,15 +4,16 @@ from matplotlib.colors import LinearSegmentedColormap
 
 period = 1.0  # период решетки
 total_strokes = 800  # общее число штрихов
+d = 5 # ширина щели
 
 theta = np.linspace(-np.pi / 2, np.pi / 2, 100)     # угол дифракции
 wavelength = np.linspace(400, 750, 1000)  # длина волны в нм
 Theta, Wavelength = np.meshgrid(theta, wavelength)
 
-# Расчет интенсивности с использованием формулы для дифракции
-Intensity = np.sin(np.pi * total_strokes * period * np.sin(Theta) / Wavelength) ** 2 / \
-            (np.sin(np.pi * period * np.sin(Theta) / Wavelength) ** 2)
-
+Intensity = (np.sin(np.pi * period * np.sin(Theta) / Wavelength) ** 2 / \
+            ((np.pi * period * np.sin(Theta) / Wavelength) ** 2)) * \
+            np.sin(np.pi * total_strokes * d * np.sin(Theta) / Wavelength) ** 2 / \
+            np.sin(np.pi * d * np.sin(Theta) / Wavelength) ** 2
 
 Intensity_normalized = Intensity / np.max(Intensity)
 
